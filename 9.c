@@ -15,7 +15,7 @@ Node* createNode(int coeff, int x_exp, int y_exp, int z_exp) {
     newNode->x_exp = x_exp;
     newNode->y_exp = y_exp;
     newNode->z_exp = z_exp;
-    newNode->next = newNode; // Circular link
+    newNode->next = newNode; 
     return newNode;
 }
 
@@ -39,14 +39,14 @@ void displayPolynomial(Node* head) {
         return;
     }
     Node* temp = head;
-    int firstTerm = 1; // Flag to check if it's the first term
+    int firstTerm = 1; 
     do {
-        if (temp->coeff != 0) { // Skip terms with zero coefficient
+        if (temp->coeff != 0) { 
             if (!firstTerm) {
                 printf("+ ");
             }
             printf("%d*x^%d*y^%d*z^%d ", temp->coeff, temp->x_exp, temp->y_exp, temp->z_exp);
-            firstTerm = 0; // After the first term, set the flag to 0
+            firstTerm = 0; 
         }
         temp = temp->next;
     } while (temp != head);
@@ -125,7 +125,7 @@ int main() {
                 printf("\nEnter polynomial to evaluate:\n");
                 eval = read_poly(eval);
                 displayPolynomial(eval);
-                // Evaluate function can be implemented here
+                
                 free(eval);
                 break;
             case 2:

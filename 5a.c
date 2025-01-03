@@ -26,8 +26,8 @@ int main() {
   scanf("%s",postfix);
   top=-1;
   for(i=0;i<strlen(postfix);i++) {
-    symbol=postfix[i]; /* Obtains the next character */
-    if(isdigit(symbol)) /* If character is a digit or not */
+    symbol=postfix[i]; 
+    if(isdigit(symbol)) 
     s[++top]=symbol-'0';
   
     else {

@@ -7,7 +7,7 @@
 int stack[MAX];
 int top = -1;
 
-// Function to push an element onto the stack
+
 void push(int element) {
     if (top == MAX - 1) {
         printf("Stack Overflow\n");
@@ -17,7 +17,7 @@ void push(int element) {
     printf("Pushed %d onto the stack\n", element);
 }
 
-// Function to pop an element from the stack
+
 int pop() {
     if (top == -1) {
         printf("Stack Underflow\n");
@@ -28,7 +28,7 @@ int pop() {
     return element;
 }
 
-// Function to check if the stack is a palindrome
+
 void checkPalindrome() {
     if (top == -1) {
         printf("Stack is empty\n");
@@ -48,7 +48,7 @@ void checkPalindrome() {
     }
 }
 
-// Function to display the stack
+
 void display() {
     if (top == -1) {
         printf("Stack is empty\n");
@@ -61,7 +61,7 @@ void display() {
     printf("\n");
 }
 
-// Main function
+
 int main() {
     int choice, element;
 
@@ -89,12 +89,12 @@ int main() {
                 checkPalindrome();
                 break;
             case 4:
-                // Demonstrate Overflow
+                
                 top = MAX - 1;
-                push(1); // This should trigger overflow
-                // Demonstrate Underflow
+                push(1); 
+                
                 top = -1;
-                pop(); // This should trigger underflow
+                pop(); 
                 break;
             case 5:
                 display();

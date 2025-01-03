@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Define the structure for a node in the BST
+
 struct Node {
     int data;
     struct Node* left;
     struct Node* right;
 };
 
-// Function to create a new node
+
 struct Node* createNode(int data) {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
     newNode->data = data;
@@ -17,7 +17,7 @@ struct Node* createNode(int data) {
     return newNode;
 }
 
-// Function to insert a node into the BST
+
 struct Node* insertNode(struct Node* root, int data) {
     if (root == NULL) {
         return createNode(data);
@@ -30,7 +30,7 @@ struct Node* insertNode(struct Node* root, int data) {
     return root;
 }
 
-// Function for inorder traversal
+
 void inorderTraversal(struct Node* root) {
     if (root != NULL) {
         inorderTraversal(root->left);
@@ -39,7 +39,7 @@ void inorderTraversal(struct Node* root) {
     }
 }
 
-// Function for preorder traversal
+
 void preorderTraversal(struct Node* root) {
     if (root != NULL) {
         printf("%d ", root->data);
@@ -48,7 +48,7 @@ void preorderTraversal(struct Node* root) {
     }
 }
 
-// Function for postorder traversal
+
 void postorderTraversal(struct Node* root) {
     if (root != NULL) {
         postorderTraversal(root->left);
@@ -57,7 +57,7 @@ void postorderTraversal(struct Node* root) {
     }
 }
 
-// Function to search for a key in the BST
+
 struct Node* search(struct Node* root, int key) {
     if (root == NULL || root->data == key) {
         return root;
@@ -68,7 +68,7 @@ struct Node* search(struct Node* root, int key) {
     return search(root->right, key);
 }
 
-// Function to create a BST with predefined integers
+
 struct Node* createBST() {
     int arr[] = {6, 9, 5, 2, 8, 15, 24, 14, 7, 8, 5, 2};
     int n = sizeof(arr) / sizeof(arr[0]);
@@ -79,7 +79,7 @@ struct Node* createBST() {
     return root;
 }
 
-// Main function
+
 int main() {
     struct Node* root = NULL;
     int choice, key;

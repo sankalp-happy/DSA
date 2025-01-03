@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define M 5 // Number of memory locations in the hash table
+#define M 5 
 
 typedef struct {
     int key;
@@ -40,7 +40,7 @@ void displayHashTable() {
 }
 
 int main() {
-    // Initialize hash table
+    
     for (int i = 0; i < M; i++) {
         hashTable[i] = NULL;
     }
@@ -61,7 +61,7 @@ int main() {
         scanf("%d", &ans);
     }
 
-    // Display hash table
+    
     displayHashTable();
 
     return 0;

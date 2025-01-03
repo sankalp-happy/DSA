@@ -5,7 +5,7 @@
 
 int adjMatrix[MAX][MAX];
 int visited[MAX];
-int n; // Number of cities
+int n; 
 
 void createGraph() {
     int i, j;

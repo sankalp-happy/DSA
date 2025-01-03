@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Define the structure for a student node
+
 struct Student {
     char usn[20];
     char name[50];
@@ -12,7 +12,7 @@ struct Student {
     struct Student* next;
 };
 
-// Function to create a new student node
+
 struct Student* createStudent(char usn[], char name[], char programme[], int sem, char phNo[]) {
     struct Student* newStudent = (struct Student*)malloc(sizeof(struct Student));
     strcpy(newStudent->usn, usn);
@@ -24,14 +24,14 @@ struct Student* createStudent(char usn[], char name[], char programme[], int sem
     return newStudent;
 }
 
-// Function to insert a student at the front of the SLL
+
 void insertFront(struct Student** head, char usn[], char name[], char programme[], int sem, char phNo[]) {
     struct Student* newStudent = createStudent(usn, name, programme, sem, phNo);
     newStudent->next = *head;
     *head = newStudent;
 }
 
-// Function to display the SLL and count the number of nodes
+
 void display(struct Student* head) {
     struct Student* temp = head;
     int count = 0;
@@ -43,7 +43,7 @@ void display(struct Student* head) {
     printf("Total number of students: %d\n", count);
 }
 
-// Function to insert a student at the end of the SLL
+
 void insertEnd(struct Student** head, char usn[], char name[], char programme[], int sem, char phNo[]) {
     struct Student* newStudent = createStudent(usn, name, programme, sem, phNo);
     if (*head == NULL) {
@@ -57,7 +57,7 @@ void insertEnd(struct Student** head, char usn[], char name[], char programme[],
     temp->next = newStudent;
 }
 
-// Function to delete a student from the front of the SLL
+
 void deleteFront(struct Student** head) {
     if (*head == NULL) {
         printf("List is empty.\n");
@@ -68,7 +68,7 @@ void deleteFront(struct Student** head) {
     free(temp);
 }
 
-// Function to delete a student from the end of the SLL
+
 void deleteEnd(struct Student** head) {
     if (*head == NULL) {
         printf("List is empty.\n");
@@ -87,7 +87,7 @@ void deleteEnd(struct Student** head) {
     temp->next = NULL;
 }
 
-// Main function
+
 int main() {
     struct Student* head = NULL;
     int choice, sem, n;

@@ -81,7 +81,7 @@ int main() {
     while (1) {
                 printf("Enter your choice: ");
         scanf("%d", &choice);
-        getchar(); // Clear the newline character from the input buffer
+        getchar(); 
 
         switch (choice) {
             case 1:

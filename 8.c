@@ -62,12 +62,12 @@ void insert_front() {
 void delete_front() {
   struct node *cur;
   cur = first;
-  if (first == NULL) /* If the List is Empty */
+  if (first == NULL) 
   {
     printf("List is Empty\n");
     return;
   }
-  if (first->next == NULL) /* If there is only one node in the List */
+  if (first->next == NULL) 
   {
     printf("%d %s %s %s %f %ld\n", first->ssn, first->name, first->dept,
            first->desg, first->sal, first->phno);
@@ -97,12 +97,12 @@ void insert_rear() {
 }
 
 void delete_rear() {
-  if (first == NULL) /*If the list is Empty*/
+  if (first == NULL) 
   {
     printf("List is Empty\n");
     return;
   }
-  if (first->next == NULL) /*If there is only one node in the List*/
+  if (first->next == NULL) 
   {
     printf("%d %s %s %s %f %ld\n", first->ssn, first->name, first->dept,
            first->desg, first->sal, first->phno);
