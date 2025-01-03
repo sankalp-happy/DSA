@@ -1,76 +1,94 @@
 #include <stdio.h>
-#include <string.h>
 
-#define MAX 100
-
-void readString(char *str, const char *prompt) {
-    printf("%s", prompt);
-    fgets(str, MAX, stdin);
-    str[strcspn(str, "\n")] = '\0'; // Remove newline character
+// Function to calculate the length of a string
+int stringLength(char *str) {
+  int length = 0;
+  while (str[length] != '\0') {
+    length++;
+  }
+  return length;
 }
 
-int findPattern(const char *str, const char *pat) {
-    int i, j, found;
-    int strLen = strlen(str);
-    int patLen = strlen(pat);
+// Function to check if PAT exists in STR
+int patternMatch(char *STR, char *PAT) {
+  int strLen = stringLength(STR);
+  int patLen = stringLength(PAT);
 
-    for (i = 0; i <= strLen - patLen; i++) {
-        found = 1;
-        for (j = 0; j < patLen; j++) {
-            if (str[i + j] != pat[j]) {
-                found = 0;
-                break;
-            }
-        }
-        if (found) {
-            return i;
-        }
+  for (int i = 0; i <= strLen - patLen; i++) {
+    int j;
+    for (j = 0; j < patLen; j++) {
+      if (STR[i + j] != PAT[j]) {
+        break;
+      }
     }
-    return -1;
+    if (j == patLen) {
+      return i; // Return the starting index of PAT in STR
+    }
+  }
+  return -1; // PAT not found in STR
 }
 
-void replacePattern(char *str, const char *pat, const char *rep) {
-    char result[MAX];
-    int i, j, k;
-    int strLen = strlen(str);
-    int patLen = strlen(pat);
-    int repLen = strlen(rep);
-    int pos = 0;
+// Function to replace all occurrences of PAT with REP in STR
+void replacePattern(char *STR, char *PAT, char *REP) {
+  int strLen = stringLength(STR);
+  int patLen = stringLength(PAT);
+  int repLen = stringLength(REP);
 
-    i = 0;
-    while (i < strLen) {
-        int index = findPattern(&str[i], pat);
-        if (index == -1) {
-            break;
-        }
-        for (j = 0; j < index; j++) {
-            result[pos++] = str[i + j];
-        }
-        for (k = 0; k < repLen; k++) {
-            result[pos++] = rep[k];
-        }
-        i += index + patLen;
+  char result[1000]; // Assuming the result string will not exceed 1000
+                     // characters
+  int i = 0, j = 0, k;
+
+  while (i < strLen) {
+    // Check if PAT exists at the current position in STR
+    int match = 1;
+    for (k = 0; k < patLen; k++) {
+      if (STR[i + k] != PAT[k]) {
+        match = 0;
+        break;
+      }
     }
-    while (i < strLen) {
-        result[pos++] = str[i++];
+
+    if (match) {
+      // Replace PAT with REP
+      for (k = 0; k < repLen; k++) {
+        result[j++] = REP[k];
+      }
+      i += patLen; // Move the index ahead by the length of PAT
+    } else {
+      // Copy the current character from STR to result
+      result[j++] = STR[i++];
     }
-    result[pos] = '\0';
-    strcpy(str, result);
+  }
+
+  result[j] = '\0'; // Null-terminate the result string
+
+  // Print the modified string
+  printf("Modified String: %s\n", result);
 }
 
 int main() {
-    char str[MAX], pat[MAX], rep[MAX];
+  char STR[1000], PAT[100], REP[100];
 
-    readString(str, "Enter the main string (STR): ");
-    readString(pat, "Enter the pattern string (PAT): ");
-    readString(rep, "Enter the replace string (REP): ");
+  // Read the main string (STR)
+  printf("Enter the main string (STR): ");
+  scanf("%[^\n]%*c", STR);
 
-    if (findPattern(str, pat) == -1) {
-        printf("Pattern not found in the main string.\n");
-    } else {
-        replacePattern(str, pat, rep);
-        printf("The new string is: %s\n", str);
-    }
+  // Read the pattern string (PAT)
+  printf("Enter the pattern string (PAT): ");
+  scanf("%[^\n]%*c", PAT);
 
-    return 0;
+  // Read the replace string (REP)
+  printf("Enter the replace string (REP): ");
+  scanf("%[^\n]%*c", REP);
+
+  // Check if PAT exists in STR
+  int index = patternMatch(STR, PAT);
+  if (index == -1) {
+    printf("Pattern '%s' not found in the main string.\n", PAT);
+  } else {
+    // Replace all occurrences of PAT with REP in STR
+    replacePattern(STR, PAT, REP);
+  }
+
+  return 0;
 }
